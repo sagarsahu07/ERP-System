@@ -1,0 +1,99 @@
+{
+  "theme": "light",
+  "archetype": "Archetype 4 (Swiss & High-Contrast)",
+  "rationale": "Enterprise ERPs (like a D-Mart system) require high data density, absolute clarity, and zero ambiguity. The Swiss/Brutalist approach strips away decorative fluff, relying on strict grids, robust typography, and high contrast monochrome with highly functional accent colors (Retail Jade for success, Signal Red for alerts).",
+  "colors": {
+    "background": {
+      "primary": "#FFFFFF",
+      "secondary": "#FAFAFA",
+      "tertiary": "#F4F4F5",
+      "header": "#FFFFFF"
+    },
+    "text": {
+      "primary": "#09090B",
+      "secondary": "#52525B",
+      "muted": "#71717A",
+      "inverse": "#FFFFFF"
+    },
+    "borders": {
+      "default": "#E4E4E7",
+      "strong": "#18181B"
+    },
+    "accents": {
+      "brand": "#00A86B",
+      "brand_hover": "#008B58",
+      "brand_light": "#D1FAE5",
+      "success": "#10B981",
+      "destructive": "#E11D48",
+      "destructive_hover": "#BE123C",
+      "warning": "#F59E0B"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Chivo, sans-serif",
+      "body": "'IBM Plex Sans', sans-serif",
+      "mono": "'IBM Plex Mono', monospace"
+    },
+    "scales": {
+      "h1": "text-4xl sm:text-5xl font-black tracking-tighter leading-none",
+      "h2": "text-2xl sm:text-3xl font-bold tracking-tight leading-tight",
+      "h3": "text-xl sm:text-2xl font-bold tracking-tight",
+      "h4": "text-lg sm:text-xl font-semibold",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm text-secondary",
+      "overline": "text-xs font-bold uppercase tracking-[0.2em] text-muted"
+    }
+  },
+  "spacing_and_layout": {
+    "philosophy": "Dense but scannable. Mode B 'Control Room' Grid.",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "grids": {
+      "dashboard": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 or gap-6",
+      "stats_cards": "col-span-1",
+      "main_chart": "col-span-1 md:col-span-2 lg:col-span-3",
+      "feed": "col-span-1 row-span-2"
+    },
+    "padding": "Generous inner padding for structural borders. p-6 or p-8 inside cards."
+  },
+  "surface_and_components": {
+    "strategy": "Grid Borders (Technical Look). Expose the skeleton.",
+    "cards": "bg-white border border-borders-default rounded-none or max rounded-sm (2px). shadow-none. On hover: -translate-y-[1px] shadow-sm border-borders-strong transition-all.",
+    "inputs": "Shadcn components heavily customized: 0px or 2px border radius, 1px solid border-borders-default focus:border-strong focus:ring-1 focus:ring-strong.",
+    "buttons": "Flat, sharp edges (rounded-none). Primary: bg-brand text-white hover:bg-brand_hover. Secondary: bg-transparent border border-borders-strong text-primary hover:bg-tertiary.",
+    "tables": "Dense rows. Header text-overline. 1px bottom border per row. Hover state on rows.",
+    "badges": "Square (rounded-none), text-xs font-bold, px-2 py-1. E.g., Active shift: bg-brand_light text-brand."
+  },
+  "interactions_and_motion": {
+    "hover": "Explicitly set text color on hover. Increase border contrast on hover.",
+    "focus": "High contrast ring focus:ring-2 focus:ring-brand focus:ring-offset-2.",
+    "transitions": "transition-all duration-200 ease-in-out.",
+    "loading": "Use IBM Plex Mono ASCII-style loading spinners or stark skeletal loaders."
+  },
+  "testing_guidelines": {
+    "data_testid": "ALL interactive and key informational elements MUST include a data-testid attribute in kebab-case, role-based. e.g., data-testid='login-submit-button', data-testid='attendance-check-in', data-testid='leave-approve-btn'."
+  },
+  "images": {
+    "login_background": {
+      "url": "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwxfHxzdXBlcm1hcmtldCUyMHJldGFpbCUyMGFpc2xlJTIwbW9kZXJufGVufDB8fHx8MTc4MjE5MDM5OXww&ixlib=rb-4.1.0&q=85",
+      "description": "Modern supermarket retail aisle, use with heavy black/white overlay or brand tint for auth screen background."
+    },
+    "employee_group": {
+      "url": "https://images.pexels.com/photos/8475204/pexels-photo-8475204.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Retail employees in aprons, useful for HR dashboard welcome banners or empty states."
+    },
+    "avatar_placeholder": {
+      "url": "https://images.unsplash.com/photo-1758518731296-20e24e58846f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjByZXRhaWwlMjBlbXBsb3llZXMlMjBncm91cCUyMHBvcnRyYWl0fGVufDB8fHx8MTc4MjE5MDM5OXww&ixlib=rb-4.1.0&q=85",
+      "description": "Use cropped portions of this for default face-recognition group captures or avatar fallbacks."
+    }
+  },
+  "instructions_to_main_agent": [
+    "Use Phosphor Icons (@phosphor-icons/react) for dense, technical dashboard iconography.",
+    "Rely heavily on React and Tailwind CSS. Implement Shadcn/UI but strip out default rounded corners. Set radius to 0 or 0.125rem globally.",
+    "Do NOT use pure #000000 or #808080. Use the provided tinted zinc/slate variables in the colors object.",
+    "For the Face Recognition mock, use an interface that scans the 'employee_group' image with a technical overlay (e.g., green bounding boxes using absolute positioning).",
+    "Construct standard Shadcn tables for Payroll, Leaves, and Attendance history, adhering strictly to 'Grid Borders' concept.",
+    "Ensure all buttons, inputs, and links have 'data-testid' attributes applied exactly as outlined.",
+    "Keep files as .js (.jsx) and install required libraries (recharts, @phosphor-icons/react, etc.)."
+  ]
+}
