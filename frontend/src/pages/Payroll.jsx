@@ -6,6 +6,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { Download, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/context/AuthContext";
+import { useCallback, useEffect, useState } from "react";
 
 function monthKeyNow() {
   const d = new Date();
@@ -30,11 +31,17 @@ export default function Payroll() {
   const [busy, setBusy] = useState(false);
   const months = lastMonths(6);
 
-  const load = async () => {
-    const { data } = await api.get("/payroll", { params: { month_key: monthKey } });
-    setItems(data.items);
-  };
-  useEffect(() => { load(); }, [monthKey]);
+  const load = useCallback(async () => {
+  const { data } = await api.get("/payroll", {
+    params: { month_key: monthKey }
+  });
+
+  setItems(data.items);
+}, [monthKey]);
+
+useEffect(() => {
+  load();
+}, [load]);
 
   const generate = async () => {
     setBusy(true);
