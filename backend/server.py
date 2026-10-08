@@ -911,6 +911,7 @@ app.add_middleware(
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "https://erp-system-sagar.netlify.app",
+        "https://smart-erp-systemm.netlify.app",
     ],
     allow_methods=["*"],
     allow_headers=["*"],
